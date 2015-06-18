@@ -192,6 +192,13 @@ func (mw *MagickWand) AutoLevelImageChannel(channel ChannelType) error {
 	return mw.GetLastError()
 }
 
+// Adjusts an image so that its orientation is suitable for viewing
+// (i.e. top-left orientation).
+func (mw *MagickWand) AutoOrientImage() error {
+	C.MagickAutoOrientImage(mw.mw)
+	return mw.GetLastError()
+}
+
 // This is like ThresholdImage() but forces all pixels below the threshold
 // into black while leaving all pixels above the threshold unchanged.
 func (mw *MagickWand) BlackThresholdImage(threshold *PixelWand) error {
